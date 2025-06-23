@@ -23,8 +23,9 @@ namespace KitapSatisAPI.Tests.Operations
         public async Task AddAsync_ShouldAddBookToDatabase()
         {
             // Arrange
-            var options = GetDbContextOptions();
-            using var context = new KitapDbContext(options);
+
+
+            var context = ConnectionOperation.GetDbContext(); //  Merkezi yöntem
             var repository = new BookRepository(context);
 
             var book = new Book

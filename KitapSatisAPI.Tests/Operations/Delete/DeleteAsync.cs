@@ -16,11 +16,7 @@ namespace KitapSatisAPI.Tests.Operations.Delete
         public async Task DeleteAsync_ShouldRemoveBookFromDatabase()
         {
             // Arrange
-            // Arrange  
-            var options = new DbContextOptionsBuilder<KitapDbContext>()
-                 .UseInMemoryDatabase(databaseName: "KitapSatisTestDb")
-                 .Options;
-            var context = new KitapDbContext(options);
+            var context = ConnectionOperation.GetDbContext(); //  Merkezi yöntem
             var repo = new BookRepository(context);
             var book = await repo.AddAsync(new Book
             {
